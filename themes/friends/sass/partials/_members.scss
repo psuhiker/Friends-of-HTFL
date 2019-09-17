@@ -1,0 +1,16 @@
+.member {
+	a {
+		text-decoration: none;
+		color: $tertiary-color;
+		&:hover {
+			color: $tertiary-color-darker;
+		}
+	}
+}
+
+#menu-member-administration li {
+    margin-bottom: $margin-sm;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

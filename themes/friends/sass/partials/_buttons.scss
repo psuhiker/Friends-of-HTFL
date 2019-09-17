@@ -1,0 +1,154 @@
+.btn {
+    @include transition($default-transition);
+    @include box-shadow($default-box-shadow);
+	text-transform: uppercase;
+	text-decoration: none !important;
+	padding: $padding-sm $padding-xxl;
+	text-shadow: $default-text-shadow;
+	margin: 0 $margin-default 0 0;
+	@include media-breakpoint-down(sm) {
+	    padding: $padding-sm $padding-lg * 2;
+	    font-size: $font-size-sm;
+	}
+	&:hover {
+	    @include box-shadow($default-box-shadow-hover);
+	    @include transition($default-transition);
+	    text-shadow: $light-text-shadow;
+	}
+	&:focus {
+	    outline: none;
+	}
+	&-sm {
+	    padding: ($padding-sm / 2) $padding-sm;
+	}
+	&-default {
+		&:hover {
+			background-color: $tertiary-color-darker;
+		}
+	}
+	&-primary {
+		&:hover {
+			background-color: $secondary-color-darker;
+		}
+	}
+	&-success {
+	    @include box-shadow(none);
+		padding: $padding-sm $padding-lg;
+		text-shadow: none;
+		&.active {
+		    @include box-shadow(none);
+			background-color: $tertiary-color;
+			border-color: $tertiary-color;
+			&:hover {
+			    @include box-shadow(none);
+			    background-color: $tertiary-color;
+			    border-color: $tertiary-color;
+			    pointer-events: none !important;
+			}
+		}
+		&:hover {
+		    @include box-shadow(none);
+			text-shadow: none;
+			background-color: $primary-color-lighter;
+			border-color: $primary-color-lighter;
+			color: $black;
+		}
+	}
+    &-submit {
+        @include box-shadow($no-box-shadow);
+        @include border-radius($default-border-radius);
+        padding: $padding-xs 40px $padding-xs $padding-default;
+        font-weight: 300;
+        background-color: $secondary-color;
+        border-color: $secondary-color;
+        position: relative;
+        color: $white;
+        border: none;
+        font-size: $font-size-sm;
+        &:hover {
+            @include box-shadow($no-box-shadow);
+            color: $white;
+            border-color: $secondary-color-darker;
+            i {
+                @include transition($default-transition);
+                @include border-radius($default-border-radius);
+                width: 100%;
+                background-color: $secondary-color-darker;
+                color: $white;
+                &:before {
+                    margin-left: 0;
+                }
+            }
+        }
+        &.dropdown-toggle {
+            &:after {
+                display: none;
+            }
+        }
+        .dropdown.show & {
+            @include box-shadow($no-box-shadow);
+            color: $white;
+            border-color: $secondary-color-darker;
+            i {
+                @include transition($default-transition);
+                @include border-radius($default-border-radius);
+                width: 100%;
+                background-color: $secondary-color-darker;
+                color: $white;
+                &:before {
+                    @include transition($default-transition);
+                    margin-left: -60%;
+                }
+                &:after {
+                    @include transition($default-transition);
+                    opacity: 1;
+                }
+            }
+        }
+        i {
+            @include border-radius($default-border-radius);
+            @include transition($default-transition);
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 40px;
+            top: 0;
+            right: 0;
+            padding: 8px 0 0 0;
+            background-color: $secondary-color;
+            &:after {
+                @include transition($default-transition);
+                content: "Downloads";
+                display: block;
+                position: absolute;
+                right: 10px;
+                top: 11px;
+                font-size: $font-size-xs;
+                font-weight: 300;
+                opacity: 0;
+            }
+            &:before {
+                @include transition($default-transition);
+            }
+        }
+        &--clear {
+            @extend .btn-submit;
+            padding: $padding-xs 40px $padding-xs $padding-default;
+            background-color: transparent;
+            border-color: transparent;
+            color: $black;
+            font-size: $font-size-sm;
+            margin-top: -3px;
+            margin-bottom: -3px;
+            i {
+                background-color: transparent;
+            }
+            &:hover {
+                i {
+                    background-color: $light-accent;
+                    color: $black;
+                }
+            }
+        }
+    }
+}

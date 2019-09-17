@@ -1,0 +1,104 @@
+header {
+    position: relative;
+    padding: $padding-lg 0;
+    .logo {
+        img {
+            max-width: 165px;
+        }
+    }
+    .navigation {
+        bottom: 0;
+        @include media-breakpoint-up(md) {
+            position: absolute;
+            right: 0;
+        }
+        ul {
+            @include media-breakpoint-down(sm) {
+                width: 200px;
+                float: right;
+                padding: 0;
+                margin: $margin-default 0 0 0;
+                font-size: $font-size-md;
+            }
+            li {
+			    margin-right: $margin-default;
+                @include media-breakpoint-down(sm) {
+                    margin-bottom: $margin-default;
+                }
+            }
+        }
+        a {
+        	@include transition($default-transition);
+        	text-decoration: none;
+        	font-weight: 700;
+        	padding: 0;
+        	@include media-breakpoint-down(md) {
+        	    border-right: 5px solid transparent;
+        	    padding-right: $padding-sm;
+        	    margin-right: -$margin-default;
+        	}
+        	&:after {
+        		@include transition($default-transition);
+        		border-bottom: 1px solid $tertiary-color;
+        		content: "";
+        		width: 0%;
+        		display: block;
+        		margin-left: 50%;
+        	}
+        	&:hover {
+        		@include transition($default-transition);
+        		@include media-breakpoint-down(sm) {
+        		    color: $primary-color-lighter;
+        		}
+        		&:after {
+        			@include transition($default-transition);
+        			width: 100%;
+        			margin-left: 0%;
+        			@include media-breakpoint-down(sm) {
+        			    width: 0;
+        			}
+        		}
+        	}
+        }
+        .current_page_item a {
+            @include media-breakpoint-down(sm) {
+                border-right: 5px solid $tertiary-color;
+                padding-right: $padding-sm;
+            }
+	        .home & {
+	        	display: none;
+	        }
+        	&:after {
+	        	border-bottom: 2px solid $tertiary-color !important;
+	        	margin-bottom: 0px;
+	        	width: 100%;
+	        	margin-left: 0%;
+	        	@include media-breakpoint-down(sm) {
+	        	    border-bottom: none !important;
+	        	}
+	        }
+        }
+        .current-page-ancestor a {
+            @include media-breakpoint-down(sm) {
+                border-right: 5px solid $tertiary-color;
+                padding-right: $padding-sm;
+            }
+        	&:after {
+            	border-bottom: 2px solid $tertiary-color !important;
+            	margin-bottom: 0px;
+            	width: 100%;
+            	margin-left: 0%;
+            	@include media-breakpoint-down(sm) {
+            	    border-bottom: none !important;
+            	}
+            }
+        }
+    }
+}
+
+.header.divider {
+    height: 15px;
+    background-color: $primary-color;
+    background-image: url(../images/bg-marquee-sliver.png);
+    width: 100%;
+}

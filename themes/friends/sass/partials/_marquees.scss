@@ -1,0 +1,114 @@
+.marquee {
+    background-size: cover;
+    background-position: center;
+    height: 55vh;
+    margin-top: 0;
+    position: relative;
+    overflow: hidden;
+    .home & {
+        overflow: visible;
+    }
+    .secondary & {
+        height: 35vh;
+        min-height: 300px;
+    }
+    &:before {
+        content: "";
+        background-image: url(../images/overlay-marquee.png);
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        .home & {
+            background-image: url(../images/overlay-marquee-home.png);
+        }
+    }
+    &.slim {
+    	height: auto;
+    	min-height: auto;
+    	color: $white;
+    	padding: $padding-lg 0;
+    	margin-bottom: 0px;
+    	&:before {
+    	    background-image: none;
+    	}
+    	input {
+    		color: $black;
+    	}
+    }
+    .block {
+        @include transition($default-transition);
+    	margin: 12.5vh 0 -12.5vh 0;
+        @include media-breakpoint-only(sm) {
+    	    margin: 20vh 0 $margin-xl 0;
+    	}
+    	@include media-breakpoint-only(md) {
+    	    margin: 20vh 0 -20vh 0;
+    	}
+    	@include media-breakpoint-only(xs) {
+    	    margin-bottom: $margin-xl;
+    	}
+    	.overlay {
+    	    @include transition($default-transition);
+    	    background-color: $primary-color;
+    	    opacity: 0;
+    	    position: absolute;
+    	    top: 0;
+    	    right: 0;
+    	    bottom: 0;
+    	    left: 0;
+    	}
+    	&:hover .overlay {
+    	    @include transition($default-transition);
+    	    opacity: 0.5;
+    	}
+    }
+    h1 {
+        font-size: $font-size-xl;
+        text-align: center;
+        color: $white;
+        text-shadow: $heavy-text-shadow;
+    }
+}
+
+/* SVGs */
+
+svg#marquee-right-shape {
+	position: absolute;
+	bottom: 0;
+	left: 66%;
+	right: 0;
+	top: 0;
+	width: 50%;
+	height: 100%;
+	display: none;
+	.cls-1 {
+		fill: $primary-color;
+		opacity: 0.95;
+	}
+}
+
+svg#bg-banner {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	overflow: visible;
+	.cls-1 {
+		fill: $primary-color;
+		opacity: 0.95;
+	}
+	@include media-breakpoint-only(xs) {
+	    left: -40vw;
+	}
+	@include media-breakpoint-up(lg) {
+	    left: 10vw;
+	}
+}
